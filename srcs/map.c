@@ -6,7 +6,7 @@
 /*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:21:11 by henrique          #+#    #+#             */
-/*   Updated: 2023/05/22 15:46:36 by henrique         ###   ########.fr       */
+/*   Updated: 2023/05/22 17:30:35 by henrique         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ int	read_map(t_game *game, char *file)
 			break ;
 	}
 	close(fd);
-	line_map_size(game);
+	if (game->map)
+		line_map_size(game);
 	return (1);
 }

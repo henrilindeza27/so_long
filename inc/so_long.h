@@ -28,5 +28,5 @@ int			check_limits(t_game *game);
 int			check_map_size(t_game *game);
 int			read_map(t_game *game, char *file);
 void		read_characters(t_game *game);
-int			check_errors(t_game *game);
+int			check_errors(t_game *game, char *file, int argc);
 #endif
