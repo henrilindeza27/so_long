@@ -11,25 +11,24 @@
 typedef struct s_game
 {
 	char	**map;
-	int map_width;  //L
-	int map_height; //A
+	int map_width;  //x
+	int map_height; //y
 
 	int		nmr_moves;
 	int		nmr_collectibles;
 	int		nmr_exit;
 	int		nmr_player;
 
-	int p_x;
-	int p_y;
+	int		p_x;
+	int		p_y;
 
 	void	*initmlx;
 	void	*winmlx;
 
 }			t_game;
 
-int			check_limits(t_game *game);
-int			check_map_size(t_game *game);
 int			read_map(t_game *game, char *file);
 void		read_characters(t_game *game);
+void		ft_free(char **map);
 int			check_errors(t_game *game, char *file, int argc);
 #endif

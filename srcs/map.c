@@ -6,13 +6,13 @@
 /*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:21:11 by henrique          #+#    #+#             */
-/*   Updated: 2023/05/22 17:30:35 by henrique         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:26:37 by henrique         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	check_limits(t_game *game)
+static int	check_limits(t_game *game)
 {
 	int	i;
 	int	lp;
@@ -38,7 +38,7 @@ int	check_limits(t_game *game)
 	return (1);
 }
 
-void	line_map_size(t_game *game)
+static void	line_map_size(t_game *game)
 {
 	int	i;
 	int	j;
@@ -53,7 +53,7 @@ void	line_map_size(t_game *game)
 	game->map_width = size;
 }
 
-int	check_map_size(t_game *game)
+static int	check_map_size(t_game *game)
 {
 	int	i;
 	int	j;
@@ -74,7 +74,7 @@ int	check_map_size(t_game *game)
 	return (1);
 }
 
-int	save_line(t_game *game, char *line)
+static int	save_line(t_game *game, char *line)
 {
 	char	**temp_map;
 	int		i;

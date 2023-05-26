@@ -1,5 +1,15 @@
 #include "../inc/so_long.h"
 
+void	ft_free(char **map)
+{
+	int	y;
+
+	y = -1;
+	while (map[++y])
+		free(map[y]);
+	free(map);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game game;
