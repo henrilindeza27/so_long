@@ -19,6 +19,9 @@ typedef struct s_game
 	int		nmr_exit;
 	int		nmr_player;
 
+	int p_x;
+	int p_y;
+
 	void	*initmlx;
 	void	*winmlx;
 

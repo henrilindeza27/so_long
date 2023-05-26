@@ -6,13 +6,14 @@
 /*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:35:07 by henrique          #+#    #+#             */
-/*   Updated: 2023/05/23 12:08:18 by henrique         ###   ########.fr       */
+/*   Updated: 2023/05/26 11:45:52 by henrique         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	check_file_extension(char *filename, char *extension)
+
+static int	check_file_extension(char *filename, char *extension)
 {
 	char	*file_extension;
 
@@ -38,7 +39,11 @@ void	read_characters(t_game *game)
 			else if (game->map[i][j] == 'E')
 				game->nmr_exit++;
 			else if (game->map[i][j] == 'P')
+			{	
+				game->p_x = i;
+				game->p_y = j;
 				game->nmr_player++;
+			}
 		}
 	}
 }

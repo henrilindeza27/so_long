@@ -10,7 +10,7 @@ int	main(int argc, char **argv)
 	if (!check_errors(&game, argv[1], argc))
 		return (0);
 	game.initmlx = mlx_init();
-	game.winmlx = mlx_new_window(game.initmlx, (game.map_width * 50),
-			(game.map_height * 50), "yes");
+	game.winmlx = mlx_new_window(game.initmlx, (game.map_width * 50),(game.map_height * 50), "yes");
+	
 	return (0);
 }
