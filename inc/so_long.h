@@ -31,4 +31,9 @@ int			read_map(t_game *game, char *file);
 void		read_characters(t_game *game);
 void		ft_free(char **map);
 int			check_errors(t_game *game, char *file, int argc);
+
+int	move_w(t_game *game, int key);
+int	move_s(t_game *game, int key);
+int	move_a(t_game *game, int key);
+int	move_d(t_game *game, int key);
 #endif
