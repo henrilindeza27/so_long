@@ -6,13 +6,13 @@
 /*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:21:11 by henrique          #+#    #+#             */
-/*   Updated: 2023/05/26 16:26:37 by henrique         ###   ########.fr       */
+/*   Updated: 2023/05/29 06:21:16 by henrique         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-static int	check_limits(t_game *game)
+int	check_limits(t_game *game)
 {
 	int	i;
 	int	lp;
@@ -53,7 +53,7 @@ static void	line_map_size(t_game *game)
 	game->map_width = size;
 }
 
-static int	check_map_size(t_game *game)
+int	check_map_size(t_game *game)
 {
 	int	i;
 	int	j;

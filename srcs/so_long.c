@@ -1,5 +1,13 @@
 #include "../inc/so_long.h"
 
+void	exit_game(t_game *game)
+{
+	if (game->winmlx)
+		mlx_destroy_window(game->initmlx, game->winmlx);
+	free(game->initmlx);
+	ft_free(game->map);
+}
+
 void	ft_free(char **map)
 {
 	int	y;
@@ -14,8 +22,8 @@ int	control_hooks(t_game *game, int key)
 {
 	int	c;
 
-	if (key == 65307)
-		//sair do jogo
+	if (key == 53)
+		exit_game(game);
 	if (key == 119)
 		c = move_w(game, key);
 	if (key == 115)
@@ -24,9 +32,9 @@ int	control_hooks(t_game *game, int key)
 		c = move_a(game, key);
 	if (key == 100)
 		c = move_d(game, key);
-	if(c)
-		//load graficos
-	return 1;
+	if (c)
+		put_graphics(game);
+	return (1);
 }
 
 int	main(int argc, char **argv)
@@ -41,6 +49,11 @@ int	main(int argc, char **argv)
 	game.initmlx = mlx_init();
 	game.winmlx = mlx_new_window(game.initmlx, (game.map_width * 50),
 			(game.map_height * 50), "yes");
+	init_images(&game);
+	put_graphics(&game);
+	mlx_key_hook(game.winmlx, control_hooks, &game);
+	mlx_hook(game.winmlx, 17, 0L, exit_game, &game);
+	mlx_loop(game.initmlx);
 
 	return (0);
 }
