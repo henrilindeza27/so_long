@@ -89,7 +89,7 @@ int	move_d(t_game *game, int key)
 	game->p_x++;
 	game->nmr_moves++;
 	print_on_screen(game);
-	return ('d');
+	return (1);
 }
 
 int	control_hooks(int key, t_game *game)

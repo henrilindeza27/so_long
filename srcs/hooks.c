@@ -90,7 +90,7 @@ int	move_d(t_game *game, int key)
 	game->p_x++;
 	game->nmr_moves++;
 	ft_printf("Moves: %d\n", game->nmr_moves);
-	return ('d');
+	return (1);
 }
 
 int	control_hooks(int key, t_game *game)
