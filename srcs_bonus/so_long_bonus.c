@@ -1,4 +1,4 @@
-#include "../inc/so_long.h"
+#include "../inc/so_long_bonus.h"
 
 void refresh_graphics_player(t_game *game, int x_pos, int y_pos, char flag)
 {
@@ -32,9 +32,15 @@ void refresh_graphics_player(t_game *game, int x_pos, int y_pos, char flag)
 void print_on_screen(t_game *game)
 {
 	char *str;
+	char *print;
 
 	str = ft_itoa(game->nmr_moves);
+	print = ft_strjoin("Moves: ", str);
+	mlx_string_put(game->initmlx, game->winmlx, 15, 30, 0xffffff, print);
+	free(str);
+	free(print);
 }
+
 void	ft_free(char **map)
 {
 	int	i;

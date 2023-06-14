@@ -1,4 +1,4 @@
-#include "../inc/so_long.h"
+#include "../inc/so_long_bonus.h"
 
 void	pixel_put(t_game *game, int x, int y, int color)
 {
@@ -35,6 +35,7 @@ void	init_images(t_game *game)
 	game->exit2 = create_img("textures/trap2.xpm", game);
 	game->collect = create_img("textures/polv1.xpm", game);
 	put_graphics(game);
+	print_on_screen(game);
 }
 
 void	load_graphics(t_data *type, t_game *game, int x_pos, int y_pos)
@@ -87,6 +88,7 @@ void	put_graphics(t_game *game)
 		}
 		x = 0;
 	}
+	
 	mlx_put_image_to_window(game->initmlx, game->winmlx, game->img.img_ptr, 0,
 			0);
 

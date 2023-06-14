@@ -1,5 +1,6 @@
 #include "../inc/so_long.h"
 
+
 int	move_w(t_game *game, int key)
 {
 	int	x;

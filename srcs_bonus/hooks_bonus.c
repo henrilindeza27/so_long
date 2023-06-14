@@ -1,4 +1,4 @@
-#include "../inc/so_long.h"
+#include "../inc/so_long_bonus.h"
 
 int	move_w(t_game *game, int key)
 {
@@ -19,7 +19,7 @@ int	move_w(t_game *game, int key)
 	game->map[y - 1][x] = 'P';
 	game->p_y--;
 	game->nmr_moves++;
-	ft_printf("Moves: %d\n", game->nmr_moves);
+	print_on_screen(game);
 	return (1);
 }
 
@@ -42,7 +42,7 @@ int	move_s(t_game *game, int key)
 	game->map[y + 1][x] = 'P';
 	game->p_y++;
 	game->nmr_moves++;
-	ft_printf("Moves: %d\n", game->nmr_moves);
+	print_on_screen(game);
 	return (1);
 }
 
@@ -65,7 +65,7 @@ int	move_a(t_game *game, int key)
 	game->map[y][x - 1] = 'P';
 	game->p_x--;
 	game->nmr_moves++;
-	ft_printf("Moves: %d\n", game->nmr_moves);
+	print_on_screen(game);
 	return (1);
 }
 
@@ -88,7 +88,7 @@ int	move_d(t_game *game, int key)
 	game->map[y][x + 1] = 'P';
 	game->p_x++;
 	game->nmr_moves++;
-	ft_printf("Moves: %d\n", game->nmr_moves);
+	print_on_screen(game);
 	return ('d');
 }
 
