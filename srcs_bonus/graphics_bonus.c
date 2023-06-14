@@ -69,12 +69,16 @@ void	put_graphics(t_game *game)
 	{
 		while (game->map[y][x])
 		{
-			if (game->map[y][x] == '0' || game->map[y][x] == 'P' || game->map[y][x] == 'C')
+			if (game->map[y][x] == '0' || game->map[y][x] == 'P'
+				|| game->map[y][x] == 'C')
+			{
 				load_graphics(&game->floor, game, x, y);
-			if (game->map[y][x] == 'P')
-				load_graphics(&game->player_s, game, x, y);
-			else if (game->map[y][x] == 'C')
-				load_graphics(&game->collect, game, x, y);
+
+				if (game->map[y][x] == 'P')
+					load_graphics(&game->player_s, game, x, y);
+				else if (game->map[y][x] == 'C')
+					load_graphics(&game->collect, game, x, y);
+			}
 			else if (game->map[y][x] == '1')
 				load_graphics(&game->wall, game, x, y);
 			else if (game->map[y][x] == 'E')
@@ -83,6 +87,7 @@ void	put_graphics(t_game *game)
 		}
 		x = 0;
 	}
-	mlx_put_image_to_window(game->initmlx, game->winmlx, game->img.img_ptr, 0,0);
+	mlx_put_image_to_window(game->initmlx, game->winmlx, game->img.img_ptr, 0,
+			0);
 
 }
