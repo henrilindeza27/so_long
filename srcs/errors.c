@@ -6,7 +6,7 @@
 /*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:35:07 by henrique          #+#    #+#             */
-/*   Updated: 2023/06/14 06:35:44 by henrique         ###   ########.fr       */
+/*   Updated: 2023/06/15 06:11:03 by henrique         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	check_file_extension(char *filename, char *extension)
 	return (0);
 }
 
-void	read_characters(t_game *game)
+int	read_characters(t_game *game)
 {
 	int	i;
 	int	j;
@@ -70,19 +70,14 @@ void	read_characters(t_game *game)
 			if (game->map[i][j] == 'C')
 				game->nmr_collectibles++;
 			else if (game->map[i][j] == 'E')
-			{
-				game->ex_x = j;
-				game->ex_y = i;
-				game->nmr_exit++;
-			}
+				save_coords(game,i,j,0);
 			else if (game->map[i][j] == 'P')
-			{
-				game->p_x = j;
-				game->p_y = i;
-				game->nmr_player++;
-			}
+				save_coords(game,i,j,1);
+			else if(game->map[i][j] != '1' && game->map[i][j] != '0')
+				return (0);
 		}
 	}
+	return (1);
 }
 
 int	check_errors(t_game *game, char *file, int argc)
@@ -98,6 +93,8 @@ int	check_errors(t_game *game, char *file, int argc)
 		ft_printf("Error(%d), the map is empty\n", error--);
 	else if (!check_map_size(game) || (game->map_height == game->map_width))
 		ft_printf("Error(%d), the map is not rectangle\n", error--);
+	else if(!read_characters(game))
+		ft_printf("Error(%d), the map have strange char\n", error--);
 	else if (!check_limits(game))
 		ft_printf("Error(%d), the map must be surrounded by walls!\n", error--);
 	else if (game->nmr_collectibles < 1)

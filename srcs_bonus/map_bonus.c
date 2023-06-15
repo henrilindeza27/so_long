@@ -6,11 +6,11 @@
 /*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:21:11 by henrique          #+#    #+#             */
-/*   Updated: 2023/06/14 07:22:58 by henrique         ###   ########.fr       */
+/*   Updated: 2023/06/15 05:42:15 by henrique         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long_bonus.h"
+#include "../inc/so_long.h"
 
 int	check_limits(t_game *game)
 {
@@ -38,29 +38,14 @@ int	check_limits(t_game *game)
 	return (1);
 }
 
-static void	line_map_size(t_game *game)
-{
-	int	i;
-	int	j;
-	int	size;
-
-	i = 0;
-	j = 0;
-	size = 0;
-	while (game->map[i] && game->map[i][j])
-		if (game->map[i][j++] != '\n')
-			size++;
-	game->map_width = size;
-}
-
 int	check_map_size(t_game *game)
 {
 	int	i;
 	int	j;
 	int	line_size;
 
-	i = 1;
-	while (game->map[i])
+	i = 0;
+	while (game->map[++i])
 	{
 		j = 0;
 		line_size = 0;
@@ -69,7 +54,6 @@ int	check_map_size(t_game *game)
 				line_size++;
 		if (line_size != game->map_width)
 			return (0);
-		i++;
 	}
 	return (1);
 }
@@ -115,6 +99,6 @@ int	read_map(t_game *game, char *file)
 	}
 	close(fd);
 	if (game->map)
-		line_map_size(game);
+		game->map_width = ft_strlen(game->map[0]) - 1;
 	return (1);
 }

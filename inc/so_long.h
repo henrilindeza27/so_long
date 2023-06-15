@@ -44,8 +44,8 @@ typedef struct s_game
 	int		p_x;
 	int		p_y;
 
-	int ex_x;
-	int ex_y;
+	int		ex_x;
+	int		ex_y;
 
 	void	*initmlx;
 	void	*winmlx;
@@ -55,16 +55,17 @@ typedef struct s_game
 int			read_map(t_game *game, char *file);
 int			check_map_size(t_game *game);
 int			check_limits(t_game *game);
-void		read_characters(t_game *game);
+int			read_characters(t_game *game);
 void		ft_free(char **map);
 int			check_errors(t_game *game, char *file, int argc);
-
+void		save_coords(t_game *game, int i, int j, int flag);
 int			control_hooks(int key, t_game *game);
 
 void		init_images(t_game *game);
-void	put_graphics(t_game *game);
-void	load_graphics(t_data *type, t_game *game, int x_pos, int y_pos);
-void refresh_graphics_player(t_game *game, int x_pos, int y_pos, char flag);
+void		put_graphics(t_game *game);
+void		load_graphics(t_data *type, t_game *game, int x_pos, int y_pos);
+void		refresh_graphics_player(t_game *game, int x_pos, int y_pos,
+				char flag);
 
 void		exit_game(t_game *game);
 #endif

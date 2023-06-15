@@ -64,9 +64,9 @@ void	put_graphics(t_game *game)
 	int x;
 	int y;
 	y = -1;
-	x = 0;
 	while (game->map[++y])
 	{
+		x = 0;
 		while (game->map[y][x])
 		{
 			if (game->map[y][x] == '0' || game->map[y][x] == 'P' || game->map[y][x] == 'C')
@@ -81,7 +81,6 @@ void	put_graphics(t_game *game)
 				load_graphics(&game->exit, game, x, y);
 			x++;
 		}
-		x = 0;
 	}
 	mlx_put_image_to_window(game->initmlx, game->winmlx, game->img.img_ptr, 0,0);
 
