@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   graphics.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/15 18:52:06 by henrique          #+#    #+#             */
+/*   Updated: 2023/06/15 18:52:13 by henrique         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/so_long.h"
 
 void	pixel_put(t_game *game, int x, int y, int color)
@@ -13,17 +25,17 @@ t_data	create_img(char *path, t_game *game)
 {
 	t_data	img;
 
-	img.img_ptr = mlx_xpm_file_to_image(game->initmlx, path, &img.x, &img.y);
-	img.addr = mlx_get_data_addr(img.img_ptr, &img.bpp, &img.line_length,
+	img.ptr = mlx_xpm_file_to_image(game->initmlx, path, &img.x, &img.y);
+	img.addr = mlx_get_data_addr(img.ptr, &img.bpp, &img.line_length,
 			&img.endian);
 	return (img);
 }
 
 void	init_images(t_game *game)
 {
-	game->img.img_ptr = mlx_new_image(game->initmlx, game->map_width * 64,
+	game->img.ptr = mlx_new_image(game->initmlx, game->map_width * 64,
 			game->map_height * 64);
-	game->img.addr = mlx_get_data_addr(game->img.img_ptr, &(game->img.bpp),
+	game->img.addr = mlx_get_data_addr(game->img.ptr, &(game->img.bpp),
 			&(game->img.line_length), &(game->img.endian));
 	game->floor = create_img("textures/floor.xpm", game);
 	game->wall = create_img("textures/wall.xpm", game);
@@ -61,15 +73,17 @@ void	load_graphics(t_data *type, t_game *game, int x_pos, int y_pos)
 
 void	put_graphics(t_game *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
+
 	y = -1;
 	while (game->map[++y])
 	{
 		x = 0;
 		while (game->map[y][x])
 		{
-			if (game->map[y][x] == '0' || game->map[y][x] == 'P' || game->map[y][x] == 'C')
+			if (game->map[y][x] == '0' || game->map[y][x] == 'P'
+				|| game->map[y][x] == 'C')
 				load_graphics(&game->floor, game, x, y);
 			if (game->map[y][x] == 'P')
 				load_graphics(&game->player_s, game, x, y);
@@ -82,6 +96,5 @@ void	put_graphics(t_game *game)
 			x++;
 		}
 	}
-	mlx_put_image_to_window(game->initmlx, game->winmlx, game->img.img_ptr, 0,0);
-
+	mlx_put_image_to_window(game->initmlx, game->winmlx, game->img.ptr, 0, 0);
 }

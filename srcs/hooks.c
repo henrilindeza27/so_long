@@ -1,5 +1,16 @@
-#include "../inc/so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hooks.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/15 18:55:04 by henrique          #+#    #+#             */
+/*   Updated: 2023/06/15 18:55:07 by henrique         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../inc/so_long.h"
 
 int	move_w(t_game *game, int key)
 {
@@ -15,7 +26,7 @@ int	move_w(t_game *game, int key)
 		return (0);
 	else if (game->map[y - 1][x] == 'C')
 		game->nmr_collectibles--;
-	refresh_graphics_player(game, x, y , 'w');
+	refresh_graphics_player(game, x, y, 'w');
 	game->map[y][x] = '0';
 	game->map[y - 1][x] = 'P';
 	game->p_y--;
@@ -38,7 +49,7 @@ int	move_s(t_game *game, int key)
 		exit_game(game);
 	else if (game->map[y + 1][x] == 'C')
 		game->nmr_collectibles--;
-	refresh_graphics_player(game, x, y , 's');
+	refresh_graphics_player(game, x, y, 's');
 	game->map[y][x] = '0';
 	game->map[y + 1][x] = 'P';
 	game->p_y++;
@@ -61,7 +72,7 @@ int	move_a(t_game *game, int key)
 		exit_game(game);
 	else if (game->map[y][x - 1] == 'C')
 		game->nmr_collectibles--;
-	refresh_graphics_player(game, x, y , 'a');
+	refresh_graphics_player(game, x, y, 'a');
 	game->map[y][x] = '0';
 	game->map[y][x - 1] = 'P';
 	game->p_x--;
@@ -84,7 +95,7 @@ int	move_d(t_game *game, int key)
 		exit_game(game);
 	else if (game->map[y][x + 1] == 'C')
 		game->nmr_collectibles--;
-	refresh_graphics_player(game, x, y , 'd');
+	refresh_graphics_player(game, x, y, 'd');
 	game->map[y][x] = '0';
 	game->map[y][x + 1] = 'P';
 	game->p_x++;

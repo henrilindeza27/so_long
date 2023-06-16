@@ -25,8 +25,7 @@ void	refresh_graphics_player(t_game *game, int x_pos, int y_pos, char flag)
 	}
 	if (game->nmr_collectibles == 0)
 		load_graphics(&game->exit2, game, game->ex_x, game->ex_y);
-	mlx_put_image_to_window(game->initmlx, game->winmlx, game->img.ptr, 0,
-			0);
+	mlx_put_image_to_window(game->initmlx, game->winmlx, game->img.ptr, 0, 0);
 }
 
 void	print_on_screen(t_game *game)

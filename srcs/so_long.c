@@ -1,9 +1,20 @@
-#include "../inc/so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/15 18:55:45 by henrique          #+#    #+#             */
+/*   Updated: 2023/06/15 18:55:48 by henrique         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../inc/so_long.h"
 
 int	main(int argc, char **argv)
 {
-	t_game game;
+	t_game	game;
 
 	ft_memset(&game, 0, sizeof(t_game));
 	read_map(&game, argv[1]);
@@ -16,6 +27,5 @@ int	main(int argc, char **argv)
 	mlx_key_hook(game.winmlx, &control_hooks, &game);
 	mlx_hook(game.winmlx, 17, 0L, (void *)exit_game, &game);
 	mlx_loop(game.initmlx);
-
 	return (0);
 }

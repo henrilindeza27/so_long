@@ -10,7 +10,7 @@
 
 typedef struct s_data
 {
-	void	*img_ptr;
+	void	*ptr;
 	char	*addr;
 	int		bpp;
 	int		line_length;

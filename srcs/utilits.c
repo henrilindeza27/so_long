@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utilits.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/15 18:56:05 by henrique          #+#    #+#             */
+/*   Updated: 2023/06/15 18:56:10 by henrique         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/so_long.h"
 
 void	refresh_graphics_player(t_game *game, int x_pos, int y_pos, char flag)
@@ -25,8 +37,7 @@ void	refresh_graphics_player(t_game *game, int x_pos, int y_pos, char flag)
 	}
 	if (game->nmr_collectibles == 0)
 		load_graphics(&game->exit2, game, game->ex_x, game->ex_y);
-	mlx_put_image_to_window(game->initmlx, game->winmlx, game->img.img_ptr, 0,
-			0);
+	mlx_put_image_to_window(game->initmlx, game->winmlx, game->img.ptr, 0, 0);
 }
 
 void	ft_free(char **map)

@@ -80,4 +80,6 @@ void		exit_game(t_game *game);
 int			anim_collect(t_game *game);
 void		read_enemy(t_game *game);
 void		save_coords(t_game *game, int i, int j, int flag);
+
+void		random_move_enemy(t_game *game);
 #endif

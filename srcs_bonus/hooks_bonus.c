@@ -1,29 +1,29 @@
 #include "../inc/so_long_bonus.h"
 
-int	move_w(t_game *game, int key)
+void	move_w(t_game *game, int key)
 {
 	int	x;
 	int	y;
 
 	x = game->p_x;
 	y = game->p_y;
-	if (game->map[y - 1][x] == 'E' && game->nmr_collectibles == 0)
+	if ((game->map[y - 1][x] == 'E' && game->nmr_collectibles == 0)
+		|| (game->map[y - 1][x] == 'Y'))
 		exit_game(game);
 	if (game->map[y - 1][x] == '1' || (game->map[y - 1][x] == 'E'
 			&& game->nmr_collectibles != 0))
-		return (0);
+		return;
 	else if (game->map[y - 1][x] == 'C')
 		game->nmr_collectibles--;
-	refresh_graphics_player(game, x, y , 'w');
+	refresh_graphics_player(game, x, y, 'w');
 	game->map[y][x] = '0';
 	game->map[y - 1][x] = 'P';
 	game->p_y--;
 	game->nmr_moves++;
 	print_on_screen(game);
-	return (1);
 }
 
-int	move_s(t_game *game, int key)
+void	move_s(t_game *game, int key)
 {
 	int	x;
 	int	y;
@@ -32,21 +32,21 @@ int	move_s(t_game *game, int key)
 	y = game->p_y;
 	if (game->map[y + 1][x] == '1' || (game->map[y + 1][x] == 'E'
 			&& game->nmr_collectibles != 0))
-		return (0);
-	if (game->map[y + 1][x] == 'E' && game->nmr_collectibles == 0)
+		return ;
+	if ((game->map[y + 1][x] == 'E' && game->nmr_collectibles == 0)
+		|| game->map[y + 1][x] == 'Y')
 		exit_game(game);
 	else if (game->map[y + 1][x] == 'C')
 		game->nmr_collectibles--;
-	refresh_graphics_player(game, x, y , 's');
+	refresh_graphics_player(game, x, y, 's');
 	game->map[y][x] = '0';
 	game->map[y + 1][x] = 'P';
 	game->p_y++;
 	game->nmr_moves++;
 	print_on_screen(game);
-	return (1);
 }
 
-int	move_a(t_game *game, int key)
+void	move_a(t_game *game, int key)
 {
 	int	x;
 	int	y;
@@ -55,21 +55,21 @@ int	move_a(t_game *game, int key)
 	y = game->p_y;
 	if (game->map[y][x - 1] == '1' || game->map[y][x - 1] == 'E'
 		&& game->nmr_collectibles != 0)
-		return (0);
-	if (game->map[y][x - 1] == 'E' && game->nmr_collectibles == 0)
+		return;
+	if ((game->map[y][x - 1] == 'E' && game->nmr_collectibles == 0)
+		|| game->map[y][x - 1] == 'Y')
 		exit_game(game);
 	else if (game->map[y][x - 1] == 'C')
 		game->nmr_collectibles--;
-	refresh_graphics_player(game, x, y , 'a');
+	refresh_graphics_player(game, x, y, 'a');
 	game->map[y][x] = '0';
 	game->map[y][x - 1] = 'P';
 	game->p_x--;
 	game->nmr_moves++;
 	print_on_screen(game);
-	return (1);
 }
 
-int	move_d(t_game *game, int key)
+void	move_d(t_game *game, int key)
 {
 	int	x;
 	int	y;
@@ -78,18 +78,18 @@ int	move_d(t_game *game, int key)
 	y = game->p_y;
 	if (game->map[y][x + 1] == '1' || game->map[y][x + 1] == 'E'
 		&& game->nmr_collectibles != 0)
-		return (0);
-	if (game->map[y][x + 1] == 'E' && game->nmr_collectibles == 0)
+		return;
+	if ((game->map[y][x + 1] == 'E' && game->nmr_collectibles == 0)
+		|| game->map[y][x + 1] == 'Y')
 		exit_game(game);
 	else if (game->map[y][x + 1] == 'C')
 		game->nmr_collectibles--;
-	refresh_graphics_player(game, x, y , 'd');
+	refresh_graphics_player(game, x, y, 'd');
 	game->map[y][x] = '0';
 	game->map[y][x + 1] = 'P';
 	game->p_x++;
 	game->nmr_moves++;
 	print_on_screen(game);
-	return (1);
 }
 
 int	control_hooks(int key, t_game *game)
