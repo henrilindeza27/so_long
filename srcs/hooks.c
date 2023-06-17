@@ -6,7 +6,7 @@
 /*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:55:04 by henrique          #+#    #+#             */
-/*   Updated: 2023/06/17 23:40:51 by henrique         ###   ########.fr       */
+/*   Updated: 2023/06/17 23:47:12 by henrique         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	move_w(t_game *game, int key)
 		exit_game(game);
 	if (game->map[y - 1][x] == '1' || (game->map[y - 1][x] == 'E'
 			&& game->nmr_collectibles != 0))
-		return;
+		return ;
 	else if (game->map[y - 1][x] == 'C')
 		game->nmr_collectibles--;
 	refresh_graphics_player(game, x, y, 'w');
@@ -65,7 +65,7 @@ void	move_a(t_game *game, int key)
 	y = game->p_y;
 	if (game->map[y][x - 1] == '1' || game->map[y][x - 1] == 'E'
 		&& game->nmr_collectibles != 0)
-		return;
+		return ;
 	if (game->map[y][x - 1] == 'E' && game->nmr_collectibles == 0)
 		exit_game(game);
 	else if (game->map[y][x - 1] == 'C')
@@ -87,7 +87,7 @@ void	move_d(t_game *game, int key)
 	y = game->p_y;
 	if (game->map[y][x + 1] == '1' || game->map[y][x + 1] == 'E'
 		&& game->nmr_collectibles != 0)
-		return;
+		return ;
 	if (game->map[y][x + 1] == 'E' && game->nmr_collectibles == 0)
 		exit_game(game);
 	else if (game->map[y][x + 1] == 'C')

@@ -6,7 +6,7 @@
 /*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:56:05 by henrique          #+#    #+#             */
-/*   Updated: 2023/06/17 23:45:34 by henrique         ###   ########.fr       */
+/*   Updated: 2023/06/17 23:47:38 by henrique         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_free(char **map)
 	free(map);
 }
 
-void free_images(t_game *game)
+void	free_images(t_game *game)
 {
 	mlx_destroy_image(game->initmlx, game->img.ptr);
 	mlx_destroy_image(game->initmlx, game->wall.ptr);
@@ -62,8 +62,8 @@ void free_images(t_game *game)
 	mlx_destroy_image(game->initmlx, game->exit2.ptr);
 	mlx_destroy_image(game->initmlx, game->collect.ptr);
 	mlx_destroy_image(game->initmlx, game->floor.ptr);
-
 }
+
 void	exit_game(t_game *game)
 {
 	ft_free(game->map);
