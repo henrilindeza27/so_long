@@ -6,7 +6,7 @@
 /*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:55:45 by henrique          #+#    #+#             */
-/*   Updated: 2023/06/17 23:43:55 by henrique         ###   ########.fr       */
+/*   Updated: 2023/06/18 00:57:16 by henrique         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	read_map(&game, argv[1]);
 	if (!check_errors(&game, argv[1], argc))
 	{
-		exit_game(&game);
+		ft_free(game.map);
 		return (0);
 	}
 	game.initmlx = mlx_init();

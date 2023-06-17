@@ -6,7 +6,7 @@
 /*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:35:07 by henrique          #+#    #+#             */
-/*   Updated: 2023/06/15 18:54:48 by henrique         ###   ########.fr       */
+/*   Updated: 2023/06/17 23:50:29 by henrique         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	check_file_extension(char *filename, char *extension)
 	return (0);
 }
 
-int	read_characters(t_game *game)
+static int	read_characters(t_game *game)
 {
 	int	i;
 	int	j;

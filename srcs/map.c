@@ -6,7 +6,7 @@
 /*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:21:11 by henrique          #+#    #+#             */
-/*   Updated: 2023/06/15 18:55:30 by henrique         ###   ########.fr       */
+/*   Updated: 2023/06/18 00:57:32 by henrique         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	check_map_size(t_game *game)
 	return (1);
 }
 
-static int	save_line(t_game *game, char *line)
+int	save_line(t_game *game, char *line)
 {
 	char	**temp_map;
 	int		i;
