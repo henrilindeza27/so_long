@@ -1,10 +1,14 @@
 NAME = so_long
 BONUS = so_long_bonus
 
-SRCS = $(wildcard ./srcs/*.c)
+SRCS = srcs/errors.c srcs/graphics.c srcs/hooks.c srcs/map.c\
+		srcs/so_long.c srcs/utilits.c
 OBJS = $(SRCS:.c=.o)
 
-B_SRCS = $(wildcard ./srcs_bonus/*.c)
+B_SRCS = srcs_bonus/enemy_bonus.c srcs_bonus/errors_bonus.c\
+		srcs_bonus/graphics_bonus.c srcs_bonus/graphics2_bonus.c\
+		srcs_bonus/hooks_bonus.c srcs_bonus/map_bonus.c\
+		srcs_bonus/so_long_bonus.c srcs_bonus/utilits_bonus.c
 B_OBJS = $(B_SRCS:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror -Iinc/

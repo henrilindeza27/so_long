@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 		return (0);
 	game.initmlx = mlx_init();
 	game.winmlx = mlx_new_window(game.initmlx, (game.map_width * 64),
-			(game.map_height * 64), "Creep yeper");
+			(game.map_height * 64), "Creep Cat");
 	init_images(&game);
 	mlx_loop_hook(game.initmlx, &anim_collect, &game);
 	mlx_key_hook(game.winmlx, &control_hooks, &game);
