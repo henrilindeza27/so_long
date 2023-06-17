@@ -6,7 +6,7 @@
 /*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:55:45 by henrique          #+#    #+#             */
-/*   Updated: 2023/06/15 18:55:48 by henrique         ###   ########.fr       */
+/*   Updated: 2023/06/17 23:43:55 by henrique         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int	main(int argc, char **argv)
 	ft_memset(&game, 0, sizeof(t_game));
 	read_map(&game, argv[1]);
 	if (!check_errors(&game, argv[1], argc))
+	{
+		exit_game(&game);
 		return (0);
+	}
 	game.initmlx = mlx_init();
 	game.winmlx = mlx_new_window(game.initmlx, (game.map_width * 64),
 			(game.map_height * 64), "Very yes");

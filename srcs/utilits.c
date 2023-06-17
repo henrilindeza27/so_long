@@ -6,7 +6,7 @@
 /*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:56:05 by henrique          #+#    #+#             */
-/*   Updated: 2023/06/15 18:56:10 by henrique         ###   ########.fr       */
+/*   Updated: 2023/06/17 23:45:34 by henrique         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,27 @@ void	ft_free(char **map)
 	free(map);
 }
 
+void free_images(t_game *game)
+{
+	mlx_destroy_image(game->initmlx, game->img.ptr);
+	mlx_destroy_image(game->initmlx, game->wall.ptr);
+	mlx_destroy_image(game->initmlx, game->player_a.ptr);
+	mlx_destroy_image(game->initmlx, game->player_d.ptr);
+	mlx_destroy_image(game->initmlx, game->player_s.ptr);
+	mlx_destroy_image(game->initmlx, game->player_w.ptr);
+	mlx_destroy_image(game->initmlx, game->exit.ptr);
+	mlx_destroy_image(game->initmlx, game->exit2.ptr);
+	mlx_destroy_image(game->initmlx, game->collect.ptr);
+	mlx_destroy_image(game->initmlx, game->floor.ptr);
+
+}
 void	exit_game(t_game *game)
 {
 	ft_free(game->map);
+	free_images(game);
 	if (game->winmlx)
 		mlx_destroy_window(game->initmlx, game->winmlx);
+	mlx_destroy_display(game->initmlx);
 	free(game->initmlx);
 	exit(0);
 }

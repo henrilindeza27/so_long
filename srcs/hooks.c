@@ -6,13 +6,13 @@
 /*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:55:04 by henrique          #+#    #+#             */
-/*   Updated: 2023/06/15 18:55:07 by henrique         ###   ########.fr       */
+/*   Updated: 2023/06/17 23:40:51 by henrique         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	move_w(t_game *game, int key)
+void	move_w(t_game *game, int key)
 {
 	int	x;
 	int	y;
@@ -23,7 +23,7 @@ int	move_w(t_game *game, int key)
 		exit_game(game);
 	if (game->map[y - 1][x] == '1' || (game->map[y - 1][x] == 'E'
 			&& game->nmr_collectibles != 0))
-		return (0);
+		return;
 	else if (game->map[y - 1][x] == 'C')
 		game->nmr_collectibles--;
 	refresh_graphics_player(game, x, y, 'w');
@@ -32,10 +32,9 @@ int	move_w(t_game *game, int key)
 	game->p_y--;
 	game->nmr_moves++;
 	ft_printf("Moves: %d\n", game->nmr_moves);
-	return (1);
 }
 
-int	move_s(t_game *game, int key)
+void	move_s(t_game *game, int key)
 {
 	int	x;
 	int	y;
@@ -44,7 +43,7 @@ int	move_s(t_game *game, int key)
 	y = game->p_y;
 	if (game->map[y + 1][x] == '1' || (game->map[y + 1][x] == 'E'
 			&& game->nmr_collectibles != 0))
-		return (0);
+		return ;
 	if (game->map[y + 1][x] == 'E' && game->nmr_collectibles == 0)
 		exit_game(game);
 	else if (game->map[y + 1][x] == 'C')
@@ -55,10 +54,9 @@ int	move_s(t_game *game, int key)
 	game->p_y++;
 	game->nmr_moves++;
 	ft_printf("Moves: %d\n", game->nmr_moves);
-	return (1);
 }
 
-int	move_a(t_game *game, int key)
+void	move_a(t_game *game, int key)
 {
 	int	x;
 	int	y;
@@ -67,7 +65,7 @@ int	move_a(t_game *game, int key)
 	y = game->p_y;
 	if (game->map[y][x - 1] == '1' || game->map[y][x - 1] == 'E'
 		&& game->nmr_collectibles != 0)
-		return (0);
+		return;
 	if (game->map[y][x - 1] == 'E' && game->nmr_collectibles == 0)
 		exit_game(game);
 	else if (game->map[y][x - 1] == 'C')
@@ -78,10 +76,9 @@ int	move_a(t_game *game, int key)
 	game->p_x--;
 	game->nmr_moves++;
 	ft_printf("Moves: %d\n", game->nmr_moves);
-	return (1);
 }
 
-int	move_d(t_game *game, int key)
+void	move_d(t_game *game, int key)
 {
 	int	x;
 	int	y;
@@ -90,7 +87,7 @@ int	move_d(t_game *game, int key)
 	y = game->p_y;
 	if (game->map[y][x + 1] == '1' || game->map[y][x + 1] == 'E'
 		&& game->nmr_collectibles != 0)
-		return (0);
+		return;
 	if (game->map[y][x + 1] == 'E' && game->nmr_collectibles == 0)
 		exit_game(game);
 	else if (game->map[y][x + 1] == 'C')
@@ -101,7 +98,6 @@ int	move_d(t_game *game, int key)
 	game->p_x++;
 	game->nmr_moves++;
 	ft_printf("Moves: %d\n", game->nmr_moves);
-	return (1);
 }
 
 int	control_hooks(int key, t_game *game)
