@@ -30,11 +30,11 @@ int	anim_collect(t_game *game)
 	print_on_screen(game);
 	if(game->nmr_exit)
 		random_move_enemy(game);
-	if (i < 250)
+	if (i < 200)
 		put_collect_sprite(game, 0);
-	else if (i < 500)
+	else if (i < 250)
 		put_collect_sprite(game, 1);
-	if (i == 500)
+	if (i == 250)
 		i = 0;
 	print_on_screen(game);
 	i++;
