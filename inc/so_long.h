@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/18 02:05:24 by henrique          #+#    #+#             */
+/*   Updated: 2023/06/18 02:05:55 by henrique         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -22,8 +34,8 @@ typedef struct s_data
 typedef struct s_game
 {
 	char	**map;
-	int map_width;  //x
-	int map_height; //y
+	int		map_width;
+	int		map_height;
 
 	int		nmr_moves;
 	int		nmr_collectibles;
@@ -55,7 +67,6 @@ typedef struct s_game
 int			read_map(t_game *game, char *file);
 int			check_map_size(t_game *game);
 int			check_limits(t_game *game);
-int			read_characters(t_game *game);
 void		ft_free(char **map);
 int			check_errors(t_game *game, char *file, int argc);
 void		save_coords(t_game *game, int i, int j, int flag);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/18 02:06:06 by henrique          #+#    #+#             */
+/*   Updated: 2023/06/18 02:06:16 by henrique         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
 
@@ -22,8 +34,8 @@ typedef struct s_data
 typedef struct s_game
 {
 	char	**map;
-	int map_width;  //x
-	int map_height; //y
+	int		map_width;
+	int		map_height;
 
 	int		nmr_moves;
 	int		nmr_collectibles;
@@ -41,7 +53,6 @@ typedef struct s_game
 	t_data	exit2;
 	t_data	collect1;
 	t_data	collect2;
-	t_data	collect3;
 	t_data	enemy1;
 	t_data	enemy2;
 	t_data	floor;
@@ -82,4 +93,5 @@ void		read_enemy(t_game *game);
 void		save_coords(t_game *game, int i, int j, int flag);
 
 void		random_move_enemy(t_game *game);
+void		help_graph(t_game *game, int x, int y);
 #endif
