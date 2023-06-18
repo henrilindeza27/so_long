@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   graphics_bonus.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/18 01:26:36 by henrique          #+#    #+#             */
+/*   Updated: 2023/06/18 01:37:25 by henrique         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/so_long_bonus.h"
 
 void	pixel_put(t_game *game, int x, int y, int color)
@@ -35,7 +47,6 @@ void	init_images(t_game *game)
 	game->exit2 = create_img("textures/trap2.xpm", game);
 	game->collect1 = create_img("textures/polv1.xpm", game);
 	game->collect2 = create_img("textures/polv2.xpm", game);
-	game->collect3 = create_img("textures/polv3.xpm", game);
 	game->enemy1 = create_img("textures/cata.xpm", game);
 	game->enemy2 = create_img("textures/catd.xpm", game);
 	put_graphics(game);
@@ -66,33 +77,16 @@ void	load_graphics(t_data *type, t_game *game, int x_pos, int y_pos)
 
 void	put_graphics(t_game *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
+
 	y = -1;
 	while (game->map[++y])
 	{
 		x = -1;
 		while (game->map[y][++x])
-		{
-			if (game->map[y][x] == '0' || game->map[y][x] == 'P'
-				|| game->map[y][x] == 'C' || game->map[y][x] == 'Y')
-			{
-				load_graphics(&game->floor, game, x, y);
-
-				if (game->map[y][x] == 'P')
-					load_graphics(&game->player_s, game, x, y);
-				else if (game->map[y][x] == 'C')
-					load_graphics(&game->collect1, game, x, y);
-				else if (game->map[y][x] == 'Y')
-					load_graphics(&game->enemy1, game, x, y);
-			}
-			else if (game->map[y][x] == '1')
-				load_graphics(&game->wall, game, x, y);
-			else if (game->map[y][x] == 'E')
-				load_graphics(&game->exit, game, x, y);
-		}
+			help_graph(game, x, y);
+		mlx_put_image_to_window(game->initmlx, game->winmlx, game->img.ptr, 0,
+			0);
 	}
-	
-	mlx_put_image_to_window(game->initmlx, game->winmlx, game->img.ptr, 0,0);
-
 }

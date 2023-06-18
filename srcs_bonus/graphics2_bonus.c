@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   graphics2_bonus.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/18 01:42:40 by henrique          #+#    #+#             */
+/*   Updated: 2023/06/18 01:42:49 by henrique         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/so_long_bonus.h"
 
 void	put_collect_sprite(t_game *game, int flag)
@@ -24,17 +36,19 @@ void	put_collect_sprite(t_game *game, int flag)
 	}
 	mlx_put_image_to_window(game->initmlx, game->winmlx, game->img.ptr, 0, 0);
 }
+
 int	anim_collect(t_game *game)
 {
-	static int i;
+	static int	i;
+
 	print_on_screen(game);
-	if(game->nmr_exit)
+	if (game->nmr_exit)
 		random_move_enemy(game);
 	if (i < 200)
 		put_collect_sprite(game, 0);
-	else if (i < 250)
+	else if (i < 350)
 		put_collect_sprite(game, 1);
-	if (i == 250)
+	if (i == 350)
 		i = 0;
 	print_on_screen(game);
 	i++;

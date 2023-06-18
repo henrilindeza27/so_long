@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hooks_bonus.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/18 01:44:32 by henrique          #+#    #+#             */
+/*   Updated: 2023/06/18 01:44:36 by henrique         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/so_long_bonus.h"
 
 void	move_w(t_game *game, int key)
@@ -12,7 +24,7 @@ void	move_w(t_game *game, int key)
 		exit_game(game);
 	if (game->map[y - 1][x] == '1' || (game->map[y - 1][x] == 'E'
 			&& game->nmr_collectibles != 0))
-		return;
+		return ;
 	else if (game->map[y - 1][x] == 'C')
 		game->nmr_collectibles--;
 	refresh_graphics_player(game, x, y, 'w');
@@ -55,7 +67,7 @@ void	move_a(t_game *game, int key)
 	y = game->p_y;
 	if (game->map[y][x - 1] == '1' || game->map[y][x - 1] == 'E'
 		&& game->nmr_collectibles != 0)
-		return;
+		return ;
 	if ((game->map[y][x - 1] == 'E' && game->nmr_collectibles == 0)
 		|| game->map[y][x - 1] == 'Y')
 		exit_game(game);
@@ -78,7 +90,7 @@ void	move_d(t_game *game, int key)
 	y = game->p_y;
 	if (game->map[y][x + 1] == '1' || game->map[y][x + 1] == 'E'
 		&& game->nmr_collectibles != 0)
-		return;
+		return ;
 	if ((game->map[y][x + 1] == 'E' && game->nmr_collectibles == 0)
 		|| game->map[y][x + 1] == 'Y')
 		exit_game(game);

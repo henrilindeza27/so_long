@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utilits_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/18 01:45:33 by henrique          #+#    #+#             */
+/*   Updated: 2023/06/18 01:45:37 by henrique         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/so_long_bonus.h"
 
 void	refresh_graphics_player(t_game *game, int x_pos, int y_pos, char flag)
@@ -31,10 +43,13 @@ void	refresh_graphics_player(t_game *game, int x_pos, int y_pos, char flag)
 void	print_on_screen(t_game *game)
 {
 	char	*print;
+	char	*move;
 
-	print = ft_strjoin("Moves: ", ft_itoa(game->nmr_moves));
+	move = ft_itoa(game->nmr_moves);
+	print = ft_strjoin("Moves: ", move);
 	mlx_string_put(game->initmlx, game->winmlx, 70, 30, 0xffffff, print);
 	free(print);
+	free(move);
 }
 
 void	save_coords(t_game *game, int i, int j, int flag)
@@ -50,5 +65,26 @@ void	save_coords(t_game *game, int i, int j, int flag)
 		game->p_x = j;
 		game->p_y = i;
 		game->nmr_player++;
+	}
+}
+
+void	help_graph(t_game *game, int x, int y)
+{
+	if (game->map[y][x] == '0' || game->map[y][x] == 'P'
+		|| game->map[y][x] == 'C' || game->map[y][x] == 'Y')
+	{
+		{
+			load_graphics(&game->floor, game, x, y);
+			if (game->map[y][x] == 'P')
+				load_graphics(&game->player_s, game, x, y);
+			else if (game->map[y][x] == 'C')
+				load_graphics(&game->collect1, game, x, y);
+			else if (game->map[y][x] == 'Y')
+				load_graphics(&game->enemy1, game, x, y);
+		}
+		else if (game->map[y][x] == '1')
+			load_graphics(&game->wall, game, x, y);
+		else if (game->map[y][x] == 'E')
+			load_graphics(&game->exit, game, x, y);
 	}
 }
