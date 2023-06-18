@@ -6,7 +6,7 @@
 /*   By: henrique <henrique@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 01:45:33 by henrique          #+#    #+#             */
-/*   Updated: 2023/06/18 01:45:37 by henrique         ###   ########.fr       */
+/*   Updated: 2023/06/18 01:48:51 by henrique         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void	help_graph(t_game *game, int x, int y)
 			else if (game->map[y][x] == 'Y')
 				load_graphics(&game->enemy1, game, x, y);
 		}
-		else if (game->map[y][x] == '1')
-			load_graphics(&game->wall, game, x, y);
-		else if (game->map[y][x] == 'E')
-			load_graphics(&game->exit, game, x, y);
 	}
+	else if (game->map[y][x] == '1')
+		load_graphics(&game->wall, game, x, y);
+	else if (game->map[y][x] == 'E')
+		load_graphics(&game->exit, game, x, y);
 }
